@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+
+        <title>Web Terminal</title>
+        <!-- Include External Library CSS -->
+        <link rel="stylesheet" href="lib/xterm/xterm.css" />
+        <link rel="stylesheet" href="lib/bootstrap-5.2.0-dist/css/bootstrap.min.css" />
+        <link rel="stylesheet" href="css/index.css" />
+        <!-- Include External Library Scripts -->
+        <script src="lib/xterm/xterm.js"></script>
+        <script src="lib/xterm/xterm-addon-fit.js"></script>
+        <script src="lib/bootstrap-5.2.0-dist/js/bootstrap.bundle.min.js"></script>
+        <!-- Include My Scripts -->
+        <script src="js/terminalKeyCodes.js"></script>
+        <script src="js/command.js"></script>
+        <script src="js/mobileAssist.js"></script>
+        <script src="js/index.js"></script>
+
+    </head>
+    <body style="overscroll-behavior: contain;">
+        <div id="TERMINAL_CONTAINER" class="container-fluid">
+            <div id="terminal"></div>
+        </div>
+
+        <!-- Modal Dialogs -->
+        <div id="ConnectDialog" class="modal" tabindex="-1" data-bs-backdrop="static" data-bs-keyboard="false">
+            <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable">
+                <div class="modal-content">
+                    <!-- <div class="modal-header">
+                        <h5 class="modal-title">Modal title</h5>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    </div> -->
+                    <div class="modal-body">
+                        <form>
+                            <div class="mb-3">
+                                <label for="CONN_USER_NAME" class="form-label">User</label>
+                                <input type="text" class="form-control" id="CONN_USER_NAME" />
+                            </div>
+                            <div class="mb-3">
+                                <label for="CONN_HOST" class="form-label">Host</label>
+                                <input type="text" class="form-control" id="CONN_HOST" placeholder="localhost" />
+                            </div>
+                            <div class="mb-3">
+                                <label for="CONN_PORT" class="form-label">Host</label>
+                                <input type="number" class="form-control" id="CONN_PORT" placeholder="22" />
+                            </div>
+                            <div class="mb-3 form-check">
+                                <input type="checkbox" class="form-check-input" id="CONN_SHC" checked />
+                                <label class="form-check-label" for="CONN_SHC">Strict Host Check</label>
+                            </div>
+                        </form>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-primary" onclick="onClickConnect();">Connect</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div id="PromptDialog" class="modal" tabindex="-1" data-bs-backdrop="static">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5>Prompt</h5>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+                    </div>
+                    <div class="modal-body">
+                        <p id="PROMPT_MSG">Hello World</p>
+                        <div id="PROMPT_INPUT_AREA">
+                            <hr>
+                            <form>
+                                <input type="text" id="PROMPT_IN" class="form-control" />
+                            </form>
+                        </div>
+                    </div>
+                    <div class="modal-footer">
+                        <span id="PROMPT_YES_NO">
+                            <button type="button" class="btn btn-primary" onclick="onClickYesNoPrompt(true);">Yes</button>
+                            <button type="button" class="btn btn-danger" onclick="onClickYesNoPrompt(false);">No</button>
+                        </span>
+                        <span id="PROMPT_CONFIRM">
+                            <button type="button" class="btn btn-primary" onclick="onClickConfirmPrompt();">Confirm</button>
+                        </span>
+                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancel</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div id="AssistantKeyList" class="fixed-bottom">
+            <button type="button" class="btn btn-light" onclick="onAssistEscape();" id="BTN_ESC">Esc</button>
+            <button type="button" class="btn btn-light" onclick="onAssistTab();" id="BTN_TAB">Tab</button>
+            <button type="button" class="btn btn-light" onclick="onAssistCtrl();" id="BTN_CTRL">Ctrl</button>
+            <button type="button" class="btn btn-light" onclick="onAssistFn();" id="BTN_FN">Fn</button>
+            <button type="button" class="btn btn-light" onclick="onAssistLeftArrow();" id="BTN_LARR">&larr;</button>
+            <button type="button" class="btn btn-light" onclick="onAssistRightArrow();" id="BTN_RARR">&rarr;</button>
+            <button type="button" class="btn btn-light" onclick="onAssistDownArrow();" id="BTN_DARR">&darr;</button>
+            <button type="button" class="btn btn-light" onclick="onAssistUpArrow();" id="BTN_UARR">&uarr;</button>
+        </div>
+    </body>
+</html>
