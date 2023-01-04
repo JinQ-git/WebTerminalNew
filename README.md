@@ -10,8 +10,8 @@ Use `maven`
 
 ## New Feature Compared to [old Version](https://github.com/JinQ-git/WebTerminal)
 
-- remove encryption message
-- append "keyboard-interactive authentication" feature (now, supports multi-factor authentication such as OTP)
+- Remove message encryption between the browser and the websocket-server.
+- Append "keyboard-interactive authentication" feature (now, supports multi-factor authentication such as OTP)
 
 ## Expose WebTerminal
 
