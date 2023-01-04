@@ -261,6 +261,8 @@ public class ConnectionHandler implements IWebSocketHandler, UserInfo, UIKeyboar
             sessionSSH.connect(timeout);
 
             chShell = (ChannelShell)sessionSSH.openChannel("shell");
+            // setPtyType(ptyType) here...: `ptyType` is one of [ "vt100", "vt102", "xterm", "xterm-256color", "linux", "screen", ...]
+            chShell.setPtyType("xterm-256color"); // default is "vt100"; Terminal app of macOS and Windows use "xterm-256color"
 
             Integer termianlRows = mConnectParams.getTermainlRows();
             Integer terminalCols = mConnectParams.getTermainlCols();
